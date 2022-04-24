@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../models/usuario.dart';
 import '../services/api_service.dart';
+import 'adddatawidget.dart';
 
 class Login extends StatefulWidget {
   Login();
@@ -101,6 +102,23 @@ class _LoginState extends State<Login> {
                             ],
                           ),
                         ),
+
+                        Container(
+                          margin: EdgeInsets.fromLTRB(0, 0, 0, 10),
+                          child: Column(
+                            children: <Widget>[
+                              RaisedButton(
+                                splashColor: Colors.red,
+                                onPressed: () {
+                                  _navigateToAddScreen(context);
+                                },
+                                child: Text('register',
+                                    style: TextStyle(color: Colors.white)),
+                                color: Colors.blue,
+                              )
+                            ],
+                          ),
+                        ),
                       ],
                     )
                 )
@@ -108,6 +126,13 @@ class _LoginState extends State<Login> {
           ),
         ),
       ),
+    );
+  }
+
+  _navigateToAddScreen (BuildContext context) async {
+    final result = await Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => AddDataWidget()),
     );
   }
 }
